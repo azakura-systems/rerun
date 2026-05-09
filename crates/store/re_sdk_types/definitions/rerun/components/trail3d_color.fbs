@@ -1,0 +1,12 @@
+namespace rerun.components;
+
+// ---
+
+/// How a [archetypes.Trail3D] chooses its color.
+struct Trail3DColor (
+  "attr.rerun.state": "unstable",
+  "attr.rust.derive": "Default, Copy, PartialEq, Eq, Hash",
+  "attr.rust.repr": "transparent"
+) {
+  color: rerun.datatypes.Trail3DColor (order: 100);
+}

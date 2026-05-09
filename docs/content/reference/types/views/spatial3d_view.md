@@ -78,6 +78,8 @@ snippet: views/spatial3d
 * [`Mesh3D`](../archetypes/mesh3d.md)
 * [`Pinhole`](../archetypes/pinhole.md)
 * [`Points3D`](../archetypes/points3d.md)
+* [`Quad3D`](../archetypes/quad3d.md)
+* [`Trail3D`](../archetypes/trail3d.md)
 * [`Transform3D`](../archetypes/transform3d.md)
 * [`TransformAxes3D`](../archetypes/transform_axes3d.md)
 * [`ViewCoordinates`](../archetypes/view_coordinates.md)

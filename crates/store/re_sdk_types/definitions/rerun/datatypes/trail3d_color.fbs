@@ -1,0 +1,18 @@
+namespace rerun.datatypes;
+
+// ---
+
+/// Color selection for a [archetypes.Trail3D].
+struct Trail3DColor (
+  "attr.rerun.state": "unstable",
+  "attr.rust.derive": "Default, Copy, PartialEq, Eq, Hash"
+) {
+  /// Color mode. 1 means solid, 2 means magnitude colormap.
+  mode: ubyte (order: 100);
+
+  /// Solid color used when mode is solid, packed as 0xRRGGBBAA.
+  color: uint (order: 200);
+
+  /// Colormap integer used when mode is magnitude.
+  colormap: ubyte (order: 300);
+}

@@ -1,0 +1,12 @@
+namespace rerun.components;
+
+// ---
+
+/// Quadrotor actuator angles in radians.
+struct Quad3DThetas (
+  "attr.rerun.state": "unstable",
+  "attr.rust.derive": "Default, Copy, PartialEq, bytemuck::Pod, bytemuck::Zeroable",
+  "attr.rust.repr": "transparent"
+) {
+  thetas: rerun.datatypes.Quad3DThetas (order: 100);
+}

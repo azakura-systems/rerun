@@ -21,15 +21,16 @@ mod prelude {
     pub use re_sdk_types::archetypes::*;
     pub use re_sdk_types::components::{
         AlbedoFactor, Color, FillMode, HalfSize2D, HalfSize3D, ImageFormat, LineStrip2D,
-        LineStrip3D, MediaType, Position2D, Position3D, Radius, Scale3D, Text, TextLogLevel,
+        LineStrip3D, MediaType, Position2D, Position3D, Quad3DModel, Radius, Scale3D, Text,
+        TextLogLevel, Trail3DColor, Trail3DLength, Trail3DMagnitude, Trail3DMagnitudeRange,
         TransformRelation, TriangleIndices, Vector2D, Vector3D,
     };
     pub use re_sdk_types::datatypes::{
         Angle, AnnotationInfo, ChannelDatatype, ClassDescription, ColorModel, Float32,
-        KeypointPair, Mat3x3, PixelFormat, Quaternion, Rgba32, RotationAxisAngle, TensorBuffer,
-        TensorData, Vec2D, Vec3D, Vec4D,
+        KeypointPair, Mat3x3, PixelFormat, Quad3DThetas, Quaternion, Rgba32, RotationAxisAngle,
+        TensorBuffer, TensorData, Trail3DPoint, Vec2D, Vec3D, Vec4D,
     };
     // Special utility types.
-    pub use re_sdk_types::{AnyValues, DynamicArchetype, Rotation3D};
+    pub use re_sdk_types::{AnyValues, DynamicArchetype, Quad3DFrame, Quad3DWithPose, Rotation3D};
 }
 pub use prelude::*;

@@ -36,6 +36,7 @@ from .mesh3d import Mesh3D
 from .pinhole import Pinhole
 from .points2d import Points2D
 from .points3d import Points3D
+from .quad3d import Quad3D
 from .recording_info import RecordingInfo
 from .scalars import Scalars
 from .segmentation_image import SegmentationImage
@@ -46,6 +47,7 @@ from .state_configuration import StateConfiguration
 from .tensor import Tensor
 from .text_document import TextDocument
 from .text_log import TextLog
+from .trail3d import Trail3D
 from .transform3d import Transform3D
 from .transform_axes3d import TransformAxes3D
 from .video_frame_reference import VideoFrameReference
@@ -87,6 +89,7 @@ __all__ = [
     "Pinhole",
     "Points2D",
     "Points3D",
+    "Quad3D",
     "RecordingInfo",
     "Scalars",
     "SegmentationImage",
@@ -97,6 +100,7 @@ __all__ = [
     "Tensor",
     "TextDocument",
     "TextLog",
+    "Trail3D",
     "Transform3D",
     "TransformAxes3D",
     "VideoFrameReference",

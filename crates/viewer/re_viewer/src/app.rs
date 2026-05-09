@@ -319,6 +319,7 @@ impl App {
 
         let mut component_ui_registry = re_component_ui::create_component_ui_registry();
         re_data_ui::register_component_uis(&mut component_ui_registry);
+        re_view_spatial::register_spatial_component_uis(&mut component_ui_registry);
 
         let (_adapter_backend, _device_tier) = creation_context.wgpu_render_state.as_ref().map_or(
             (

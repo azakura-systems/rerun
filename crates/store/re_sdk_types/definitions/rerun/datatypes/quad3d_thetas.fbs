@@ -1,0 +1,22 @@
+namespace rerun.datatypes;
+
+// ---
+
+/// Quadrotor actuator angles in radians.
+struct Quad3DThetas (
+  "attr.rerun.state": "unstable",
+  "attr.rust.derive": "Default, Copy, PartialEq, bytemuck::Pod, bytemuck::Zeroable",
+  "attr.rust.repr": "C"
+) {
+  /// Front-left actuator angle.
+  fl: rerun.datatypes.Float32 (order: 100);
+
+  /// Front-right actuator angle.
+  fr: rerun.datatypes.Float32 (order: 200);
+
+  /// Rear-left actuator angle.
+  rl: rerun.datatypes.Float32 (order: 300);
+
+  /// Rear-right actuator angle.
+  rr: rerun.datatypes.Float32 (order: 400);
+}

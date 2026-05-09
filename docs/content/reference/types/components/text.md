@@ -37,6 +37,7 @@ Utf8
 * [`McapSchema`](../archetypes/mcap_schema.md)
 * [`Points2D`](../archetypes/points2d.md)
 * [`Points3D`](../archetypes/points3d.md)
+* [`Quad3D`](../archetypes/quad3d.md)
 * [`StateChange`](../archetypes/state_change.md)
 * [`StateConfiguration`](../archetypes/state_configuration.md)
 * [`TextDocument`](../archetypes/text_document.md)

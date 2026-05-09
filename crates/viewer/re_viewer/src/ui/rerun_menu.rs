@@ -2,12 +2,12 @@
 
 use std::fmt::Write as _;
 
-use egui::ScrollArea;
+use egui::{NumExt as _, ScrollArea};
 #[cfg(debug_assertions)]
 use egui::containers::menu;
 use egui::containers::menu::{MenuButton, MenuConfig};
 use re_ui::menu::menu_style;
-use re_ui::{UICommand, UICommandSender as _, UiExt as _, icons};
+use re_ui::{UICommand, UICommandSender as _, UiExt as _};
 use re_viewer_context::ActiveStoreContext;
 
 use crate::App;
@@ -21,14 +21,22 @@ impl App {
         _store_context: Option<&ActiveStoreContext<'_>>,
         ui: &mut egui::Ui,
     ) {
+        let desired_icon_height = if ui.max_rect().height() <= 24.0 {
+            // Keep the compact logo sharp on low-DPI screens.
+            16.0
+        } else {
+            ui.max_rect().height() - 4.0
+        };
+        let desired_icon_height = desired_icon_height.at_most(28.0);
+
         let icon_tint = ui.tokens().strong_fg_color;
         let image = re_ui::icons::RERUN_WORDMARK
             .as_image()
-            .max_height(12.0)
+            .max_height(desired_icon_height)
             .tint(icon_tint)
             .alt_text("Menu");
 
-        MenuButton::new((image, icons::DROPDOWN_ARROW.as_image().tint(icon_tint)))
+        MenuButton::new(image)
             .config(MenuConfig::new().style(menu_style()))
             .ui(ui, |ui| {
                 ui.set_max_height(ui.content_rect().height());

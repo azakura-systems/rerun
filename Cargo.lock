@@ -1013,6 +1013,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "be5eb007b7cacc6c660343e96f650fedf4b5a77512399eb952ca6642cf8d13f7"
 
 [[package]]
+name = "azk_assets"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3aac526960c07556279ac89d7cba7ff6f75806b179cd35db97b79905529d6612"
+dependencies = [
+ "thiserror 2.0.18",
+]
+
+[[package]]
 name = "backtrace"
 version = "0.3.76"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -10188,10 +10197,12 @@ dependencies = [
  "ahash",
  "anyhow",
  "arrow",
+ "azk_assets",
  "bitflags 2.11.0",
  "bytemuck",
  "egui",
  "glam",
+ "gltf",
  "half",
  "hexasphere",
  "image",
@@ -10203,6 +10214,7 @@ dependencies = [
  "ordered-float 5.1.0",
  "re_arrow_util",
  "re_byte_size",
+ "re_chunk",
  "re_chunk_store",
  "re_component_ui",
  "re_data_ui",

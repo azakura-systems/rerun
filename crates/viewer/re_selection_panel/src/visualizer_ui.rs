@@ -427,6 +427,7 @@ fn visualizer_components(
                         target_component_descr.clone(),
                         &instruction.override_path,
                         raw_current_value_array.clone(),
+                        instruction,
                     );
                 },
             );
@@ -1122,8 +1123,9 @@ fn menu_more(
     component_descr: ComponentDescriptor,
     override_path: &EntityPath,
     raw_current_value: ArrayRef,
+    instruction: &VisualizerInstruction,
 ) {
-    reset_override_button(ctx, ui, component_descr.clone(), override_path);
+    reset_visualizer_override_button(ctx, ui, component_descr.clone(), override_path, instruction);
 
     if ui.button("Make default for current view").clicked() {
         ctx.save_blueprint_array(
@@ -1131,6 +1133,44 @@ fn menu_more(
             component_descr,
             raw_current_value,
         );
+        ui.close();
+    }
+}
+
+fn reset_visualizer_override_button(
+    ctx: &ViewContext<'_>,
+    ui: &mut egui::Ui,
+    component_descr: ComponentDescriptor,
+    override_path: &EntityPath,
+    instruction: &VisualizerInstruction,
+) {
+    let component = component_descr.component;
+    let raw_override = ctx
+        .viewer_ctx
+        .raw_latest_at_in_current_blueprint(override_path, component);
+    let raw_override_default_blueprint = ctx
+        .viewer_ctx
+        .raw_latest_at_in_default_blueprint(override_path, component);
+    let has_custom_mapping = instruction.component_mappings.get(&component)
+        == Some(&VisualizerComponentSource::Override);
+
+    if ui
+        .add_enabled(
+            raw_override != raw_override_default_blueprint || has_custom_mapping,
+            egui::Button::new("Reset override to default blueprint"),
+        )
+        .on_hover_text("Resets the override to what is specified in the default blueprint")
+        .on_disabled_hover_text("Current override is the same as the override specified in the default blueprint (if any)")
+        .clicked()
+    {
+        ctx.reset_blueprint_component(override_path.clone(), component_descr);
+
+        if has_custom_mapping {
+            let mut updated_instruction = instruction.clone();
+            updated_instruction.component_mappings.remove(&component);
+            updated_instruction.write_instruction_to_blueprint(ctx.viewer_ctx);
+        }
+
         ui.close();
     }
 }

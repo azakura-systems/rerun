@@ -1,0 +1,12 @@
+namespace rerun.components;
+
+// ---
+
+/// How a [archetypes.Trail3D] chooses its magnitude range.
+struct Trail3DMagnitudeRange (
+  "attr.rerun.state": "unstable",
+  "attr.rust.derive": "Default, Copy, PartialEq",
+  "attr.rust.repr": "transparent"
+) {
+  range: rerun.datatypes.Trail3DMagnitudeRange (order: 100);
+}

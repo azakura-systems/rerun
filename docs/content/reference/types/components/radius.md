@@ -45,3 +45,4 @@ Float32
 * [`Pinhole`](../archetypes/pinhole.md)
 * [`Points2D`](../archetypes/points2d.md)
 * [`Points3D`](../archetypes/points3d.md)
+* [`Trail3D`](../archetypes/trail3d.md)

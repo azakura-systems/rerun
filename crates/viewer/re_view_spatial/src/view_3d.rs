@@ -32,11 +32,44 @@ use crate::spatial_topology::{HeuristicHints, SpatialTopology, SubSpaceConnectio
 use crate::ui::SpatialViewState;
 use crate::view_kind::SpatialViewKind;
 use crate::visualizers::{
-    CamerasVisualizer, TransformAxes3DVisualizer, register_3d_spatial_visualizers,
+    CamerasVisualizer, TransformAxes3DVisualizer, default_quad3d_model_component,
+    default_trail3d_color_component, default_trail3d_length_component,
+    default_trail3d_magnitude_range_component, default_trail3d_radius_component,
+    register_3d_spatial_visualizers,
 };
 
 #[derive(Default)]
 pub struct SpatialView3D;
+
+fn register_quad_trail_fallbacks(
+    system_registry: &mut re_viewer_context::ViewSystemRegistrator<'_>,
+) {
+    system_registry
+        .register_fallback_provider(archetypes::Quad3D::descriptor_model().component, |_| {
+            default_quad3d_model_component()
+        });
+    system_registry.register_fallback_provider(
+        archetypes::Quad3D::descriptor_show_label().component,
+        |_| re_sdk_types::components::ShowLabels::from(true),
+    );
+
+    system_registry
+        .register_fallback_provider(archetypes::Trail3D::descriptor_color().component, |_| {
+            default_trail3d_color_component()
+        });
+    system_registry.register_fallback_provider(
+        archetypes::Trail3D::descriptor_magnitude_range().component,
+        |_| default_trail3d_magnitude_range_component(),
+    );
+    system_registry
+        .register_fallback_provider(archetypes::Trail3D::descriptor_radius().component, |_| {
+            default_trail3d_radius_component()
+        });
+    system_registry
+        .register_fallback_provider(archetypes::Trail3D::descriptor_length().component, |_| {
+            default_trail3d_length_component()
+        });
+}
 
 type ViewType = re_sdk_types::blueprint::views::Spatial3DView;
 
@@ -256,6 +289,7 @@ impl ViewClass for SpatialView3D {
         );
 
         shared_fallbacks::register_fallbacks(system_registry);
+        register_quad_trail_fallbacks(system_registry);
 
         // Ensure spatial topology is registered.
         crate::spatial_topology::SpatialTopologyStoreSubscriber::subscription_handle();

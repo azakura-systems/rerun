@@ -1,0 +1,34 @@
+namespace rerun.archetypes;
+
+// ---
+
+/// A quadrotor model rendered from local GLB assets.
+///
+/// The quadrotor pose is logged through normal [archetypes.Transform3D]
+/// translation/quaternion components by the Rust extension constructor.
+table Quad3D (
+  "attr.docs.category": "Spatial 3D",
+  "attr.docs.view_types": "Spatial3DView",
+  "attr.rerun.state": "unstable",
+  "attr.rerun.visualizer": "Quad3D",
+  "attr.rust.derive": "PartialEq",
+  "attr.rust.new_pub_crate"
+) {
+  // --- Required ---
+
+  /// Quadrotor actuator angles in radians.
+  thetas: rerun.components.Quad3DThetas ("attr.rerun.component_required", order: 1000);
+
+  // --- Recommended ---
+
+  /// The GLB model filename.
+  model: rerun.components.Quad3DModel ("attr.rerun.component_recommended", nullable, order: 2000);
+
+  // --- Optional ---
+
+  /// Optional text label for the quadrotor.
+  label: rerun.components.Text ("attr.rerun.component_optional", nullable, order: 3000);
+
+  /// Whether the text label should be shown.
+  show_label: rerun.components.ShowLabels ("attr.rerun.component_optional", nullable, order: 3100);
+}

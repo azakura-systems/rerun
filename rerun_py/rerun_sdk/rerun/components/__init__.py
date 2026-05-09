@@ -81,6 +81,8 @@ from .pinhole_projection import PinholeProjection, PinholeProjectionBatch
 from .plane3d import Plane3D, Plane3DBatch
 from .position2d import Position2D, Position2DBatch
 from .position3d import Position3D, Position3DBatch
+from .quad3d_model import Quad3DModel, Quad3DModelBatch
+from .quad3d_thetas import Quad3DThetas, Quad3DThetasBatch
 from .radius import Radius, RadiusBatch
 from .range1d import Range1D, Range1DBatch
 from .resolution import Resolution, ResolutionBatch
@@ -99,6 +101,11 @@ from .texcoord2d import Texcoord2D, Texcoord2DBatch
 from .text import Text, TextBatch
 from .text_log_level import TextLogLevel, TextLogLevelBatch
 from .timestamp import Timestamp, TimestampBatch
+from .trail3d_color import Trail3DColor, Trail3DColorBatch
+from .trail3d_length import Trail3DLength, Trail3DLengthBatch
+from .trail3d_magnitude import Trail3DMagnitude, Trail3DMagnitudeBatch
+from .trail3d_magnitude_range import Trail3DMagnitudeRange, Trail3DMagnitudeRangeBatch
+from .trail3d_point import Trail3DPoint, Trail3DPointBatch
 from .transform_frame_id import TransformFrameId, TransformFrameIdBatch
 from .transform_mat3x3 import TransformMat3x3, TransformMat3x3Batch
 from .transform_relation import (
@@ -245,6 +252,10 @@ __all__ = [
     "Position2DBatch",
     "Position3D",
     "Position3DBatch",
+    "Quad3DModel",
+    "Quad3DModelBatch",
+    "Quad3DThetas",
+    "Quad3DThetasBatch",
     "Radius",
     "RadiusBatch",
     "Range1D",
@@ -281,6 +292,16 @@ __all__ = [
     "TextLogLevelBatch",
     "Timestamp",
     "TimestampBatch",
+    "Trail3DColor",
+    "Trail3DColorBatch",
+    "Trail3DLength",
+    "Trail3DLengthBatch",
+    "Trail3DMagnitude",
+    "Trail3DMagnitudeBatch",
+    "Trail3DMagnitudeRange",
+    "Trail3DMagnitudeRangeBatch",
+    "Trail3DPoint",
+    "Trail3DPointBatch",
     "TransformFrameId",
     "TransformFrameIdBatch",
     "TransformMat3x3",

@@ -40,6 +40,11 @@ pub use view_3d::SpatialView3D;
 // Export some other types that are useful for extensions.
 pub use contexts::TransformTreeContext;
 
+pub fn register_spatial_component_uis(registry: &mut re_viewer_context::ComponentUiRegistry) {
+    visualizers::register_quad3d_component_uis(registry);
+    visualizers::register_trail3d_component_uis(registry);
+}
+
 mod view_kind {
     /// Whether a spatial visualizer prefers 2D or 3D views.
     ///

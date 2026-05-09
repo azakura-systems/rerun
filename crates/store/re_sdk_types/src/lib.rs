@@ -310,5 +310,8 @@ pub use visualizer::{VisualizableArchetype, Visualizer};
 mod colormap_category;
 pub use colormap_category::{ColormapCategory, ColormapSelection};
 
+mod quad3d;
+pub use quad3d::{Quad3DFrame, Quad3DWithPose};
+
 #[cfg(feature = "testing")]
 pub mod testing;

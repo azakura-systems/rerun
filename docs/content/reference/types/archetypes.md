@@ -66,6 +66,8 @@ This page lists all built-in archetypes.
 * [`LineStrips3D`](archetypes/line_strips3d.md): 3D line strips with positions and optional colors, radii, labels, etc.
 * [`Mesh3D`](archetypes/mesh3d.md): A 3D triangle mesh as specified by its per-mesh and per-vertex properties.
 * [`Points3D`](archetypes/points3d.md): A 3D point cloud with positions and optional colors, radii, labels, etc.
+* [`Quad3D`](archetypes/quad3d.md): A quadrotor model rendered from local GLB assets.
+* [`Trail3D`](archetypes/trail3d.md): A time-windowed 3D trail built from logged points.
 
 ## Text
 

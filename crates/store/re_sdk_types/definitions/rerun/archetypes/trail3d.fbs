@@ -1,0 +1,37 @@
+namespace rerun.archetypes;
+
+// ---
+
+/// A time-windowed 3D trail built from logged points.
+table Trail3D (
+  "attr.docs.category": "Spatial 3D",
+  "attr.docs.view_types": "Spatial3DView",
+  "attr.rerun.state": "unstable",
+  "attr.rerun.visualizer": "Trail3D",
+  "attr.rust.derive": "PartialEq",
+  "attr.rust.new_pub_crate"
+) {
+  // --- Required ---
+
+  /// A 3D point appended to the trail.
+  point: rerun.components.Trail3DPoint ("attr.rerun.component_required", order: 1000);
+
+  // --- Recommended ---
+
+  /// How the trail color is chosen.
+  color: rerun.components.Trail3DColor ("attr.rerun.component_recommended", nullable, order: 2000);
+
+  /// The rendered trail line radius.
+  radius: rerun.components.Radius ("attr.rerun.component_recommended", nullable, order: 2100);
+
+  /// Trail length for temporal and sequence timelines.
+  length: rerun.components.Trail3DLength ("attr.rerun.component_recommended", nullable, order: 2200);
+
+  // --- Optional ---
+
+  /// Optional scalar used to color the trail.
+  magnitude: rerun.components.Trail3DMagnitude ("attr.rerun.component_optional", nullable, order: 3000);
+
+  /// How the magnitude range is chosen.
+  magnitude_range: rerun.components.Trail3DMagnitudeRange ("attr.rerun.component_optional", nullable, order: 3100);
+}

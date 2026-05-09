@@ -23,6 +23,7 @@ Utf8
 * [`GraphNode`](../components/graph_node.md)
 * [`MediaType`](../components/media_type.md)
 * [`Name`](../components/name.md)
+* [`Quad3DModel`](../components/quad3d_model.md)
 * [`TextLogLevel`](../components/text_log_level.md)
 * [`Text`](../components/text.md)
 * [`TransformFrameId`](../components/transform_frame_id.md)

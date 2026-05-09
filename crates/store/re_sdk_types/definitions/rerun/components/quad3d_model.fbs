@@ -1,0 +1,15 @@
+namespace rerun.components;
+
+// ---
+
+/// The GLB model filename used by [archetypes.Quad3D].
+table Quad3DModel (
+  "attr.arrow.transparent",
+  "attr.python.aliases": "str",
+  "attr.python.array_aliases": "str | Sequence[str]",
+  "attr.rerun.state": "unstable",
+  "attr.rust.derive": "Default, PartialEq, Eq, PartialOrd, Ord",
+  "attr.rust.repr": "transparent"
+) {
+  value: rerun.datatypes.Utf8 (order: 100);
+}

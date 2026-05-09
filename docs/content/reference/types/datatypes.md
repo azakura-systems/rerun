@@ -29,6 +29,7 @@ Data types are the lowest layer of the data model hierarchy. They are re-usable 
 * [`Mat4x4`](datatypes/mat4x4.md): A 4x4 Matrix.
 * [`PixelFormat`](datatypes/pixel_format.md): Specifieds a particular format of an [`archetypes.Image`](https://rerun.io/docs/reference/types/archetypes/image).
 * [`Plane3D`](datatypes/plane3d.md): An infinite 3D plane represented by a unit normal vector and a distance.
+* [`Quad3DThetas`](datatypes/quad3d_thetas.md): Quadrotor actuator angles in radians.
 * [`Quaternion`](datatypes/quaternion.md): A Quaternion represented by 4 real numbers.
 * [`Range1D`](datatypes/range1d.md): A 1D range, specifying a lower and upper bound.
 * [`Range2D`](datatypes/range2d.md): An Axis-Aligned Bounding Box in 2D space, implemented as the minimum and maximum corners.
@@ -41,6 +42,10 @@ Data types are the lowest layer of the data model hierarchy. They are re-usable 
 * [`TimeInt`](datatypes/time_int.md): A 64-bit number describing either nanoseconds OR sequence numbers.
 * [`TimeRange`](datatypes/time_range.md): Visible time range bounds for a specific timeline.
 * [`TimeRangeBoundary`](datatypes/time_range_boundary.md): Left or right boundary of a time range.
+* [`Trail3DColor`](datatypes/trail3d_color.md): Color selection for a [`archetypes.Trail3D`](https://rerun.io/docs/reference/types/archetypes/trail3d).
+* [`Trail3DLength`](datatypes/trail3d_length.md): Trail length for temporal and sequence timelines.
+* [`Trail3DMagnitudeRange`](datatypes/trail3d_magnitude_range.md): Magnitude range selection for a [`archetypes.Trail3D`](https://rerun.io/docs/reference/types/archetypes/trail3d).
+* [`Trail3DPoint`](datatypes/trail3d_point.md): A point in 3D space used by [`archetypes.Trail3D`](https://rerun.io/docs/reference/types/archetypes/trail3d).
 * [`UInt16`](datatypes/uint16.md): A 16bit unsigned integer.
 * [`UInt32`](datatypes/uint32.md): A 32bit unsigned integer.
 * [`UInt64`](datatypes/uint64.md): A 64bit unsigned integer.

@@ -1,0 +1,12 @@
+namespace rerun.components;
+
+// ---
+
+/// A 3D point appended to a [archetypes.Trail3D].
+struct Trail3DPoint (
+  "attr.rerun.state": "unstable",
+  "attr.rust.derive": "Default, Copy, PartialEq, bytemuck::Pod, bytemuck::Zeroable",
+  "attr.rust.repr": "transparent"
+) {
+  point: rerun.datatypes.Trail3DPoint (order: 100);
+}

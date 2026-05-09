@@ -1,0 +1,141 @@
+Azakura Rerun migration guide
+=============================
+
+Scope
+-----
+This fork keeps the public crate and binary as normal Rerun, while adding
+native support for Azakura quadrotor visualization:
+
+- Quad3D: a native spatial archetype/visualizer for quadrotor models.
+- Trail3D: a native spatial archetype/visualizer for historical 3D trails.
+- A small viewer branding/theme delta.
+
+Prefer upstream Rerun patterns when rebasing. Avoid reintroducing old external
+extension hooks unless they are independently useful to Rerun.
+
+Native SDK types
+----------------
+Quad3D and Trail3D are defined through the normal Rerun schema/codegen path:
+
+- crates/store/re_sdk_types/definitions/rerun/archetypes/quad3d.fbs
+- crates/store/re_sdk_types/definitions/rerun/archetypes/trail3d.fbs
+- crates/store/re_sdk_types/definitions/rerun/components/quad3d_*.fbs
+- crates/store/re_sdk_types/definitions/rerun/components/trail3d_*.fbs
+- crates/store/re_sdk_types/definitions/rerun/datatypes/quad3d_thetas.fbs
+- crates/store/re_sdk_types/definitions/rerun/datatypes/trail3d_*.fbs
+
+Generated Rust, C++, Python, docs, and reflection files are expected to change
+after running re_types_builder. Do not hand-edit generated files unless that is
+already normal for the upstream file.
+
+Rust extension files add ergonomic helpers only:
+
+- crates/store/re_sdk_types/src/archetypes/quad3d_ext.rs
+- crates/store/re_sdk_types/src/archetypes/trail3d_ext.rs
+- crates/store/re_sdk_types/src/datatypes/quad3d_thetas_ext.rs
+- crates/store/re_sdk_types/src/datatypes/trail3d_*_ext.rs
+
+Quad3D pose is intentionally serialized as normal Transform3D
+translation/quaternion components. This keeps transform inheritance, focus, and
+camera tracking on Rerun's native transform path.
+
+Spatial visualizers
+-------------------
+The viewer visualizers live next to existing Spatial3D visualizers:
+
+- crates/viewer/re_view_spatial/src/visualizers/quad3d.rs
+- crates/viewer/re_view_spatial/src/visualizers/trail3d.rs
+
+They are registered in:
+
+- crates/viewer/re_view_spatial/src/visualizers/mod.rs
+- crates/viewer/re_view_spatial/src/view_3d.rs
+
+Quad3D:
+
+- Loads GLB models from azk_assets under `rerun/quad3d`.
+- Prefers `default.glb`, otherwise falls back to the first available `.glb`.
+- Expects model nodes named `body`, `fl_act`, `fr_act`, `rl_act`, `rr_act`.
+- Rotates actuator meshes with `theta.rem_euclid(TAU)`.
+- Uses the body mesh bounds for focus/camera tracking to avoid rotor jitter.
+- Reports missing or invalid models through viewer visualizer errors.
+
+Trail3D:
+
+- Queries recent historical Trail3D points using the configured length window.
+- Supports solid color and magnitude colormap modes.
+- Supports auto/fixed magnitude ranges.
+- Uses native Radius and line rendering.
+- Reports invalid fixed magnitude ranges through viewer visualizer errors.
+
+Viewer UI and blueprint behavior
+--------------------------------
+Quad3D and Trail3D use generated reflection metadata and normal fallback
+providers so the selection panel, source selector, overrides, viewer defaults,
+and blueprint reset behavior work like native Rerun components.
+
+Custom component editors are registered through:
+
+- crates/viewer/re_view_spatial/src/lib.rs
+- crates/viewer/re_viewer/src/app.rs
+
+The selection-panel reset logic in
+`crates/viewer/re_selection_panel/src/visualizer_ui.rs` was adjusted so
+resetting a custom override also clears the matching custom source mapping.
+Without this, edited fields could remain stuck on `Custom` after reset.
+
+Assets and dependencies
+-----------------------
+Quad3D model discovery uses:
+
+- azk_assets
+
+The Spatial3D viewer also depends on:
+
+- gltf, for reading Quad3D model node/mesh data.
+- re_chunk, for Trail3D range queries.
+
+Branding and theme
+------------------
+The fork keeps the older cold/blue Rerun palette by restoring the pre
+27c90366696241da2e2ff7deea9cf97f330fc7eb UI token files:
+
+- crates/viewer/re_ui/data/color_table.ron
+- crates/viewer/re_ui/data/dark_theme.ron
+- crates/viewer/re_ui/data/light_theme.ron
+- crates/viewer/re_ui/src/design_tokens.rs
+
+When rebasing across upstream UI skin changes, check for removed color tokens
+or changed token semantics before accepting upstream theme files.
+
+The top-left menu branding is customized by replacing:
+
+- crates/viewer/re_ui/data/icons/rerun_wordmark.svg
+
+The menu button code in:
+
+- crates/viewer/re_viewer/src/ui/rerun_menu.rs
+
+uses that single SVG asset, removes the extra inserted dropdown arrow, and
+restores the old dynamic icon sizing behavior.
+
+Do not maintain upstream UI snapshot PNG churn for these visual-only fork
+choices unless snapshot tests become part of the fork's release process.
+
+Verification
+------------
+Useful checks after rebasing or editing these areas:
+
+- cargo check -p re_sdk_types
+- cargo check -p re_view_spatial
+- cargo check -p re_viewer
+- cargo check -p rerun
+
+Also run the external smoke-test project that logs Quad3D and Trail3D before
+publishing or cutting a release.
+
+Known follow-up
+---------------
+- Quad3D model directory scanning happens on viewer/UI paths. It is acceptable
+  for a small local asset directory, but should become cached/refreshable if
+  model directories grow or live on slow filesystems.

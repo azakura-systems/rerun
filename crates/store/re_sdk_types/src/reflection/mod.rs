@@ -1174,6 +1174,28 @@ fn generate_component_reflection() -> Result<ComponentReflectionMap, Serializati
             },
         ),
         (
+            <Quad3DModel as Component>::name(),
+            ComponentReflection {
+                docstring_md: "The GLB model filename used by [`archetypes.Quad3D`](https://rerun.io/docs/reference/types/archetypes/quad3d).\n\n⚠\u{fe0f} **This type is _unstable_ and may change significantly in a way that the data won't be backwards compatible.**",
+                deprecation_summary: None,
+                custom_placeholder: Some(Quad3DModel::default().to_arrow()?),
+                datatype: Quad3DModel::arrow_datatype(),
+                is_enum: false,
+                verify_arrow_array: Quad3DModel::verify_arrow_array,
+            },
+        ),
+        (
+            <Quad3DThetas as Component>::name(),
+            ComponentReflection {
+                docstring_md: "Quadrotor actuator angles in radians.\n\n⚠\u{fe0f} **This type is _unstable_ and may change significantly in a way that the data won't be backwards compatible.**",
+                deprecation_summary: None,
+                custom_placeholder: Some(Quad3DThetas::default().to_arrow()?),
+                datatype: Quad3DThetas::arrow_datatype(),
+                is_enum: false,
+                verify_arrow_array: Quad3DThetas::verify_arrow_array,
+            },
+        ),
+        (
             <Radius as Component>::name(),
             ComponentReflection {
                 docstring_md: "The radius of something, e.g. a point.\n\nInternally, positive values indicate scene units, whereas negative values\nare interpreted as UI points.\n\nUI points are independent of zooming in Views, but are sensitive to the application UI scaling.\nat 100% UI scaling, UI points are equal to pixels\nThe Viewer's UI scaling defaults to the OS scaling which typically is 100% for full HD screens and 200% for 4k screens.",
@@ -1369,6 +1391,61 @@ fn generate_component_reflection() -> Result<ComponentReflectionMap, Serializati
                 datatype: Timestamp::arrow_datatype(),
                 is_enum: false,
                 verify_arrow_array: Timestamp::verify_arrow_array,
+            },
+        ),
+        (
+            <Trail3DColor as Component>::name(),
+            ComponentReflection {
+                docstring_md: "How a [`archetypes.Trail3D`](https://rerun.io/docs/reference/types/archetypes/trail3d) chooses its color.\n\n⚠\u{fe0f} **This type is _unstable_ and may change significantly in a way that the data won't be backwards compatible.**",
+                deprecation_summary: None,
+                custom_placeholder: Some(Trail3DColor::default().to_arrow()?),
+                datatype: Trail3DColor::arrow_datatype(),
+                is_enum: false,
+                verify_arrow_array: Trail3DColor::verify_arrow_array,
+            },
+        ),
+        (
+            <Trail3DLength as Component>::name(),
+            ComponentReflection {
+                docstring_md: "Trail length for temporal and sequence timelines.\n\n⚠\u{fe0f} **This type is _unstable_ and may change significantly in a way that the data won't be backwards compatible.**",
+                deprecation_summary: None,
+                custom_placeholder: Some(Trail3DLength::default().to_arrow()?),
+                datatype: Trail3DLength::arrow_datatype(),
+                is_enum: false,
+                verify_arrow_array: Trail3DLength::verify_arrow_array,
+            },
+        ),
+        (
+            <Trail3DMagnitude as Component>::name(),
+            ComponentReflection {
+                docstring_md: "A scalar used to color a [`archetypes.Trail3D`](https://rerun.io/docs/reference/types/archetypes/trail3d).\n\n⚠\u{fe0f} **This type is _unstable_ and may change significantly in a way that the data won't be backwards compatible.**",
+                deprecation_summary: None,
+                custom_placeholder: Some(Trail3DMagnitude::default().to_arrow()?),
+                datatype: Trail3DMagnitude::arrow_datatype(),
+                is_enum: false,
+                verify_arrow_array: Trail3DMagnitude::verify_arrow_array,
+            },
+        ),
+        (
+            <Trail3DMagnitudeRange as Component>::name(),
+            ComponentReflection {
+                docstring_md: "How a [`archetypes.Trail3D`](https://rerun.io/docs/reference/types/archetypes/trail3d) chooses its magnitude range.\n\n⚠\u{fe0f} **This type is _unstable_ and may change significantly in a way that the data won't be backwards compatible.**",
+                deprecation_summary: None,
+                custom_placeholder: Some(Trail3DMagnitudeRange::default().to_arrow()?),
+                datatype: Trail3DMagnitudeRange::arrow_datatype(),
+                is_enum: false,
+                verify_arrow_array: Trail3DMagnitudeRange::verify_arrow_array,
+            },
+        ),
+        (
+            <Trail3DPoint as Component>::name(),
+            ComponentReflection {
+                docstring_md: "A 3D point appended to a [`archetypes.Trail3D`](https://rerun.io/docs/reference/types/archetypes/trail3d).\n\n⚠\u{fe0f} **This type is _unstable_ and may change significantly in a way that the data won't be backwards compatible.**",
+                deprecation_summary: None,
+                custom_placeholder: Some(Trail3DPoint::default().to_arrow()?),
+                datatype: Trail3DPoint::arrow_datatype(),
+                is_enum: false,
+                verify_arrow_array: Trail3DPoint::verify_arrow_array,
             },
         ),
         (
@@ -3320,6 +3397,45 @@ fn generate_archetype_reflection() -> ArchetypeReflectionMap {
             },
         ),
         (
+            ArchetypeName::new("rerun.archetypes.Quad3D"),
+            ArchetypeReflection {
+                display_name: "Quad 3D",
+                deprecation_summary: None,
+                scope: None,
+                view_types: &["Spatial3DView"],
+                fields: vec![
+                    ArchetypeFieldReflection {
+                        name: "thetas",
+                        display_name: "Thetas",
+                        component_type: "rerun.components.Quad3DThetas".into(),
+                        docstring_md: "Quadrotor actuator angles in radians.",
+                        flags: ArchetypeFieldFlags::REQUIRED | ArchetypeFieldFlags::UI_EDITABLE,
+                    },
+                    ArchetypeFieldReflection {
+                        name: "model",
+                        display_name: "Model",
+                        component_type: "rerun.components.Quad3DModel".into(),
+                        docstring_md: "The GLB model filename.",
+                        flags: ArchetypeFieldFlags::UI_EDITABLE,
+                    },
+                    ArchetypeFieldReflection {
+                        name: "label",
+                        display_name: "Label",
+                        component_type: "rerun.components.Text".into(),
+                        docstring_md: "Optional text label for the quadrotor.",
+                        flags: ArchetypeFieldFlags::UI_EDITABLE,
+                    },
+                    ArchetypeFieldReflection {
+                        name: "show_label",
+                        display_name: "Show label",
+                        component_type: "rerun.components.ShowLabels".into(),
+                        docstring_md: "Whether the text label should be shown.",
+                        flags: ArchetypeFieldFlags::UI_EDITABLE,
+                    },
+                ],
+            },
+        ),
+        (
             ArchetypeName::new("rerun.archetypes.RecordingInfo"),
             ArchetypeReflection {
                 display_name: "Recording info",
@@ -3630,6 +3746,59 @@ fn generate_archetype_reflection() -> ArchetypeReflectionMap {
                         display_name: "Color",
                         component_type: "rerun.components.Color".into(),
                         docstring_md: "Optional color to use for the log line in the Rerun Viewer.",
+                        flags: ArchetypeFieldFlags::UI_EDITABLE,
+                    },
+                ],
+            },
+        ),
+        (
+            ArchetypeName::new("rerun.archetypes.Trail3D"),
+            ArchetypeReflection {
+                display_name: "Trail 3D",
+                deprecation_summary: None,
+                scope: None,
+                view_types: &["Spatial3DView"],
+                fields: vec![
+                    ArchetypeFieldReflection {
+                        name: "point",
+                        display_name: "Point",
+                        component_type: "rerun.components.Trail3DPoint".into(),
+                        docstring_md: "A 3D point appended to the trail.",
+                        flags: ArchetypeFieldFlags::REQUIRED | ArchetypeFieldFlags::UI_EDITABLE,
+                    },
+                    ArchetypeFieldReflection {
+                        name: "color",
+                        display_name: "Color",
+                        component_type: "rerun.components.Trail3DColor".into(),
+                        docstring_md: "How the trail color is chosen.",
+                        flags: ArchetypeFieldFlags::UI_EDITABLE,
+                    },
+                    ArchetypeFieldReflection {
+                        name: "radius",
+                        display_name: "Radius",
+                        component_type: "rerun.components.Radius".into(),
+                        docstring_md: "The rendered trail line radius.",
+                        flags: ArchetypeFieldFlags::UI_EDITABLE,
+                    },
+                    ArchetypeFieldReflection {
+                        name: "length",
+                        display_name: "Length",
+                        component_type: "rerun.components.Trail3DLength".into(),
+                        docstring_md: "Trail length for temporal and sequence timelines.",
+                        flags: ArchetypeFieldFlags::UI_EDITABLE,
+                    },
+                    ArchetypeFieldReflection {
+                        name: "magnitude",
+                        display_name: "Magnitude",
+                        component_type: "rerun.components.Trail3DMagnitude".into(),
+                        docstring_md: "Optional scalar used to color the trail.",
+                        flags: ArchetypeFieldFlags::UI_EDITABLE,
+                    },
+                    ArchetypeFieldReflection {
+                        name: "magnitude_range",
+                        display_name: "Magnitude range",
+                        component_type: "rerun.components.Trail3DMagnitudeRange".into(),
+                        docstring_md: "How the magnitude range is chosen.",
                         flags: ArchetypeFieldFlags::UI_EDITABLE,
                     },
                 ],

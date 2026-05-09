@@ -62,6 +62,8 @@ on [Entities and Components](../../concepts/logging-and-ingestion/entity-compone
 * [`Plane3D`](components/plane3d.md): An infinite 3D plane represented by a unit normal vector and a distance.
 * [`Position2D`](components/position2d.md): A position in 2D space.
 * [`Position3D`](components/position3d.md): A position in 3D space.
+* [`Quad3DModel`](components/quad3d_model.md): The GLB model filename used by [`archetypes.Quad3D`](https://rerun.io/docs/reference/types/archetypes/quad3d).
+* [`Quad3DThetas`](components/quad3d_thetas.md): Quadrotor actuator angles in radians.
 * [`Radius`](components/radius.md): The radius of something, e.g. a point.
 * [`Range1D`](components/range1d.md): A 1D range, specifying a lower and upper bound.
 * [`Resolution`](components/resolution.md): Pixel resolution width & height, e.g. of a camera sensor.
@@ -80,6 +82,11 @@ on [Entities and Components](../../concepts/logging-and-ingestion/entity-compone
 * [`Text`](components/text.md): A string of text, e.g. for labels and text documents.
 * [`TextLogLevel`](components/text_log_level.md): The severity level of a text log message.
 * [`Timestamp`](components/timestamp.md): When the recording started.
+* [`Trail3DColor`](components/trail3d_color.md): How a [`archetypes.Trail3D`](https://rerun.io/docs/reference/types/archetypes/trail3d) chooses its color.
+* [`Trail3DLength`](components/trail3d_length.md): Trail length for temporal and sequence timelines.
+* [`Trail3DMagnitude`](components/trail3d_magnitude.md): A scalar used to color a [`archetypes.Trail3D`](https://rerun.io/docs/reference/types/archetypes/trail3d).
+* [`Trail3DMagnitudeRange`](components/trail3d_magnitude_range.md): How a [`archetypes.Trail3D`](https://rerun.io/docs/reference/types/archetypes/trail3d) chooses its magnitude range.
+* [`Trail3DPoint`](components/trail3d_point.md): A 3D point appended to a [`archetypes.Trail3D`](https://rerun.io/docs/reference/types/archetypes/trail3d).
 * [`TransformFrameId`](components/transform_frame_id.md): A string identifier for a transform frame.
 * [`TransformMat3x3`](components/transform_mat3x3.md): A 3x3 transformation matrix Matrix.
 * [`TransformRelation`](components/transform_relation.md): Specifies relation a spatial transform describes.

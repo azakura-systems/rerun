@@ -34,6 +34,7 @@ from .mat3x3 import Mat3x3, Mat3x3ArrayLike, Mat3x3Batch, Mat3x3Like
 from .mat4x4 import Mat4x4, Mat4x4ArrayLike, Mat4x4Batch, Mat4x4Like
 from .pixel_format import PixelFormat, PixelFormatArrayLike, PixelFormatBatch, PixelFormatLike
 from .plane3d import Plane3D, Plane3DArrayLike, Plane3DBatch, Plane3DLike
+from .quad3d_thetas import Quad3DThetas, Quad3DThetasArrayLike, Quad3DThetasBatch, Quad3DThetasLike
 from .quaternion import Quaternion, QuaternionArrayLike, QuaternionBatch, QuaternionLike
 from .range1d import Range1D, Range1DArrayLike, Range1DBatch, Range1DLike
 from .range2d import Range2D, Range2DArrayLike, Range2DBatch, Range2DLike
@@ -66,6 +67,15 @@ from .time_range_boundary import (
     TimeRangeBoundaryBatch,
     TimeRangeBoundaryLike,
 )
+from .trail3d_color import Trail3DColor, Trail3DColorArrayLike, Trail3DColorBatch, Trail3DColorLike
+from .trail3d_length import Trail3DLength, Trail3DLengthArrayLike, Trail3DLengthBatch, Trail3DLengthLike
+from .trail3d_magnitude_range import (
+    Trail3DMagnitudeRange,
+    Trail3DMagnitudeRangeArrayLike,
+    Trail3DMagnitudeRangeBatch,
+    Trail3DMagnitudeRangeLike,
+)
+from .trail3d_point import Trail3DPoint, Trail3DPointArrayLike, Trail3DPointBatch, Trail3DPointLike
 from .uint16 import UInt16, UInt16ArrayLike, UInt16Batch, UInt16Like
 from .uint32 import UInt32, UInt32ArrayLike, UInt32Batch, UInt32Like
 from .uint64 import UInt64, UInt64ArrayLike, UInt64Batch, UInt64Like
@@ -171,6 +181,10 @@ __all__ = [
     "Plane3DArrayLike",
     "Plane3DBatch",
     "Plane3DLike",
+    "Quad3DThetas",
+    "Quad3DThetasArrayLike",
+    "Quad3DThetasBatch",
+    "Quad3DThetasLike",
     "Quaternion",
     "QuaternionArrayLike",
     "QuaternionBatch",
@@ -219,6 +233,22 @@ __all__ = [
     "TimeRangeBoundaryBatch",
     "TimeRangeBoundaryLike",
     "TimeRangeLike",
+    "Trail3DColor",
+    "Trail3DColorArrayLike",
+    "Trail3DColorBatch",
+    "Trail3DColorLike",
+    "Trail3DLength",
+    "Trail3DLengthArrayLike",
+    "Trail3DLengthBatch",
+    "Trail3DLengthLike",
+    "Trail3DMagnitudeRange",
+    "Trail3DMagnitudeRangeArrayLike",
+    "Trail3DMagnitudeRangeBatch",
+    "Trail3DMagnitudeRangeLike",
+    "Trail3DPoint",
+    "Trail3DPointArrayLike",
+    "Trail3DPointBatch",
+    "Trail3DPointLike",
     "UInt16",
     "UInt16ArrayLike",
     "UInt16Batch",

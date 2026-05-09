@@ -31,7 +31,8 @@ namespace rerun::blueprint::archetypes {
         std::vector<ComponentColumn> columns;
         columns.reserve(4);
         if (segment_preview_column.has_value()) {
-            columns.push_back(segment_preview_column.value().partitioned(lengths_).value_or_throw()
+            columns.push_back(
+                segment_preview_column.value().partitioned(lengths_).value_or_throw()
             );
         }
         if (flag_column.has_value()) {

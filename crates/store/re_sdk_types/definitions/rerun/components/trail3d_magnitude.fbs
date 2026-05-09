@@ -1,0 +1,14 @@
+namespace rerun.components;
+
+// ---
+
+/// A scalar used to color a [archetypes.Trail3D].
+struct Trail3DMagnitude (
+  "attr.python.aliases": "float",
+  "attr.python.array_aliases": "float | npt.NDArray[np.float64]",
+  "attr.rerun.state": "unstable",
+  "attr.rust.derive": "Default, Copy, PartialEq, PartialOrd, bytemuck::Pod, bytemuck::Zeroable",
+  "attr.rust.repr": "transparent"
+) {
+  value: rerun.datatypes.Float64 (order: 100);
+}

@@ -1,0 +1,12 @@
+namespace rerun.components;
+
+// ---
+
+/// Trail length for temporal and sequence timelines.
+struct Trail3DLength (
+  "attr.rerun.state": "unstable",
+  "attr.rust.derive": "Default, Copy, PartialEq",
+  "attr.rust.repr": "transparent"
+) {
+  length: rerun.datatypes.Trail3DLength (order: 100);
+}

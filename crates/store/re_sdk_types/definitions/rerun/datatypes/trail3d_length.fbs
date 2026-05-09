@@ -1,0 +1,16 @@
+namespace rerun.datatypes;
+
+// ---
+
+/// Trail length for temporal and sequence timelines.
+struct Trail3DLength (
+  "attr.rerun.state": "unstable",
+  "attr.rust.derive": "Default, Copy, PartialEq",
+  "attr.rust.repr": "C"
+) {
+  /// Duration in seconds used on temporal timelines.
+  seconds: double (order: 100);
+
+  /// Number of ticks used on sequence timelines.
+  ticks: uint64 (order: 200);
+}

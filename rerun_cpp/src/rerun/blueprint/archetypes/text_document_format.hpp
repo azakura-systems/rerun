@@ -66,7 +66,8 @@ namespace rerun::blueprint::archetypes {
         /// Whether to use a monospace font for the document body.
         ///
         /// Defaults to disabled.
-        TextDocumentFormat with_monospace(const rerun::blueprint::components::Enabled& _monospace
+        TextDocumentFormat with_monospace(
+            const rerun::blueprint::components::Enabled& _monospace
         ) && {
             monospace =
                 ComponentBatch::from_loggable(_monospace, Descriptor_monospace).value_or_throw();
@@ -76,7 +77,8 @@ namespace rerun::blueprint::archetypes {
         /// Whether to wrap long lines in the document body.
         ///
         /// Defaults to enabled.
-        TextDocumentFormat with_word_wrap(const rerun::blueprint::components::Enabled& _word_wrap
+        TextDocumentFormat with_word_wrap(
+            const rerun::blueprint::components::Enabled& _word_wrap
         ) && {
             word_wrap =
                 ComponentBatch::from_loggable(_word_wrap, Descriptor_word_wrap).value_or_throw();

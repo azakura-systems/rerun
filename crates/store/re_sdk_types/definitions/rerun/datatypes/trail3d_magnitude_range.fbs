@@ -1,0 +1,19 @@
+namespace rerun.datatypes;
+
+// ---
+
+/// Magnitude range selection for a [archetypes.Trail3D].
+struct Trail3DMagnitudeRange (
+  "attr.rerun.state": "unstable",
+  "attr.rust.derive": "Default, Copy, PartialEq",
+  "attr.rust.repr": "C"
+) {
+  /// 1 means auto, 2 means fixed.
+  mode: ubyte (order: 100);
+
+  /// Fixed range minimum.
+  min: double (order: 200);
+
+  /// Fixed range maximum.
+  max: double (order: 300);
+}

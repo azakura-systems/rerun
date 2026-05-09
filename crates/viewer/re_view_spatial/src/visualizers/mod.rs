@@ -18,14 +18,22 @@ mod lines3d;
 mod meshes;
 mod points2d;
 mod points3d;
+mod quad3d;
 mod segmentation_images;
+mod trail3d;
 mod transform_axes_3d;
 pub mod utilities;
 mod video;
 
 pub use cameras::{CamerasVisualizer, CamerasVisualizerOutput};
 pub use depth_images::{DepthImageProcessResult, DepthImageVisualizer, DepthImageVisualizerOutput};
+pub use quad3d::{default_quad3d_model_component, register_quad3d_component_uis};
 use re_sdk_types::{ComponentDescriptor, ComponentIdentifier, archetypes};
+pub use trail3d::{
+    default_trail3d_color_component, default_trail3d_length_component,
+    default_trail3d_magnitude_range_component, default_trail3d_radius_component,
+    register_trail3d_component_uis,
+};
 pub use transform_axes_3d::{TransformAxes3DVisualizer, add_axis_arrows};
 pub use utilities::{
     SpatialViewVisualizerData, UiLabel, UiLabelStyle, UiLabelTarget, entity_iterator,
@@ -88,7 +96,9 @@ pub fn register_2d_spatial_visualizers(
     system_registry.register_visualizer::<meshes::Mesh3DVisualizer>()?;
     system_registry.register_visualizer::<points2d::Points2DVisualizer>()?;
     system_registry.register_visualizer::<points3d::Points3DVisualizer>()?;
+    system_registry.register_visualizer::<quad3d::Quad3DVisualizer>()?;
     system_registry.register_visualizer::<segmentation_images::SegmentationImageVisualizer>()?;
+    system_registry.register_visualizer::<trail3d::Trail3DVisualizer>()?;
     system_registry.register_visualizer::<transform_axes_3d::TransformAxes3DVisualizer>()?;
     system_registry.register_visualizer::<video::VideoFrameReferenceVisualizer>()?;
     system_registry.register_visualizer::<video::VideoStreamVisualizer>()?;
@@ -118,7 +128,9 @@ pub fn register_3d_spatial_visualizers(
     system_registry.register_visualizer::<meshes::Mesh3DVisualizer>()?;
     system_registry.register_visualizer::<points2d::Points2DVisualizer>()?;
     system_registry.register_visualizer::<points3d::Points3DVisualizer>()?;
+    system_registry.register_visualizer::<quad3d::Quad3DVisualizer>()?;
     system_registry.register_visualizer::<segmentation_images::SegmentationImageVisualizer>()?;
+    system_registry.register_visualizer::<trail3d::Trail3DVisualizer>()?;
     system_registry.register_visualizer::<transform_axes_3d::TransformAxes3DVisualizer>()?;
     system_registry.register_visualizer::<video::VideoFrameReferenceVisualizer>()?;
     system_registry.register_visualizer::<video::VideoStreamVisualizer>()?;

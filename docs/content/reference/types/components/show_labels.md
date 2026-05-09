@@ -39,4 +39,5 @@ Boolean
 * [`LineStrips3D`](../archetypes/line_strips3d.md)
 * [`Points2D`](../archetypes/points2d.md)
 * [`Points3D`](../archetypes/points3d.md)
+* [`Quad3D`](../archetypes/quad3d.md)
 * [`TransformAxes3D`](../archetypes/transform_axes3d.md)
