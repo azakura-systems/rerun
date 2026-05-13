@@ -1,51 +1,52 @@
 use crate::{AsComponents, SerializedComponentBatch};
 
-/// Per-frame Quad3D pose and actuator state.
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub struct Quad3DFrame {
-    /// Translation in the parent coordinate system.
-    pub translation: crate::components::Translation3D,
-
-    /// Rotation in the parent coordinate system.
-    pub quaternion: crate::components::RotationQuat,
-
-    /// Quadrotor actuator angles in radians.
-    pub thetas: crate::datatypes::Quad3DThetas,
-}
-
-/// A Quad3D loggable that also writes the native Transform3D pose components.
+/// A `Quad3D` loggable that also writes native `Transform3D` components when configured.
 #[derive(Clone, Debug, PartialEq)]
-pub struct Quad3DWithPose {
+pub struct Quad3D {
     quad: crate::archetypes::Quad3D,
-    pose: crate::archetypes::Transform3D,
+    transform: crate::archetypes::Transform3D,
 }
 
-impl Quad3DWithPose {
-    /// Creates a Quad3D frame with native Transform3D pose components.
-    pub fn from_frame(frame: impl Into<Quad3DFrame>) -> Self {
-        let frame = frame.into();
+impl Quad3D {
+    /// Creates a `Quad3D` from quadrotor actuator angles in radians.
+    pub fn from_thetas(thetas: impl Into<crate::datatypes::Quad3DThetas>) -> Self {
         Self {
-            quad: crate::archetypes::Quad3D::new(frame.thetas),
-            pose: crate::archetypes::Transform3D::update_fields()
-                .with_translation(frame.translation)
-                .with_quaternion(frame.quaternion),
+            quad: crate::archetypes::Quad3D::new(thetas),
+            transform: crate::archetypes::Transform3D::update_fields(),
         }
     }
 
-    /// Sets the pose and actuator state.
-    pub fn with_frame(self, frame: impl Into<Quad3DFrame>) -> Self {
-        let frame = frame.into();
-        let mut this = self;
-        this.pose = this
-            .pose
-            .with_translation(frame.translation)
-            .with_quaternion(frame.quaternion);
-        this.with_thetas(frame.thetas)
+    /// Updates only specific `Quad3D` and `Transform3D` fields.
+    pub fn update_fields() -> Self {
+        Self {
+            quad: crate::archetypes::Quad3D::update_fields(),
+            transform: crate::archetypes::Transform3D::update_fields(),
+        }
+    }
+
+    /// Clears all `Quad3D` and `Transform3D` fields.
+    pub fn clear_fields() -> Self {
+        Self {
+            quad: crate::archetypes::Quad3D::clear_fields(),
+            transform: crate::archetypes::Transform3D::clear_fields(),
+        }
     }
 
     /// Sets quadrotor actuator angles in radians.
-    pub fn with_thetas(mut self, thetas: impl Into<crate::components::Quad3DThetas>) -> Self {
+    pub fn with_thetas(mut self, thetas: impl Into<crate::datatypes::Quad3DThetas>) -> Self {
         self.quad = self.quad.with_thetas(thetas);
+        self
+    }
+
+    /// Sets the native `Transform3D` translation.
+    pub fn with_translation(mut self, translation: impl Into<crate::datatypes::Vec3D>) -> Self {
+        self.transform = self.transform.with_translation(translation.into());
+        self
+    }
+
+    /// Sets the native `Transform3D` quaternion rotation.
+    pub fn with_quaternion(mut self, quaternion: impl Into<crate::datatypes::Quaternion>) -> Self {
+        self.transform = self.transform.with_quaternion(quaternion.into());
         self
     }
 
@@ -68,9 +69,9 @@ impl Quad3DWithPose {
     }
 }
 
-impl AsComponents for Quad3DWithPose {
+impl AsComponents for Quad3D {
     fn as_serialized_batches(&self) -> Vec<SerializedComponentBatch> {
-        let mut batches = self.pose.as_serialized_batches();
+        let mut batches = self.transform.as_serialized_batches();
         batches.extend(self.quad.as_serialized_batches());
         batches
     }

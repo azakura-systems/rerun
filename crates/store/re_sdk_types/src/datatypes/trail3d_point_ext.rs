@@ -1,7 +1,7 @@
 use super::Trail3DPoint;
 
 impl Trail3DPoint {
-    /// Creates a Trail3D point.
+    /// Creates a `Trail3D` point.
     pub fn new(x: f32, y: f32, z: f32) -> Self {
         Self {
             x: x.into(),

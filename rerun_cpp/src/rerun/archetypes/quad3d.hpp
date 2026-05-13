@@ -20,8 +20,8 @@
 namespace rerun::archetypes {
     /// **Archetype**: A quadrotor model rendered from local GLB assets.
     ///
-    /// The quadrotor pose is logged through normal `archetypes::Transform3D`
-    /// translation/quaternion components by the Rust extension constructor.
+    /// The public Rust API logs quadrotor transforms through normal
+    /// `archetypes::Transform3D` translation/quaternion components.
     ///
     /// ⚠ **This type is _unstable_ and may change significantly in a way that the data won't be backwards compatible.**
     ///

@@ -6,8 +6,8 @@ title: "Quad3D"
 ⚠️ **This type is _unstable_ and may change significantly in a way that the data won't be backwards compatible.**
 A quadrotor model rendered from local GLB assets.
 
-The quadrotor pose is logged through normal [`archetypes.Transform3D`](https://rerun.io/docs/reference/types/archetypes/transform3d)
-translation/quaternion components by the Rust extension constructor.
+The public Rust API logs quadrotor transforms through normal
+[`archetypes.Transform3D`](https://rerun.io/docs/reference/types/archetypes/transform3d) translation/quaternion components.
 
 ## Fields
 ### Required

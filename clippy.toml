@@ -29,7 +29,7 @@ too-many-lines-threshold = 600 # TODO(emilk): decrease this
 disallowed-macros = [
   'std::dbg',
 
-  { path = "egui::hex_color", reason = "Do not hard-code colors - declare them design_tokens.rs instead, and define in light/dark_theme.json" },
+  { path = "egui::hex_color", reason = "Do not hard-code colors - declare them design_tokens.rs instead, and define in light/dark_theme.json", allow-invalid = true },
 
   { path = "std::debug_assert", reason = "Use `re_log::debug_assert` instead" },
   { path = "std::debug_assert_eq", reason = "Use `re_log::debug_assert_eq` instead" },

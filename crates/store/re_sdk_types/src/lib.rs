@@ -311,7 +311,7 @@ mod colormap_category;
 pub use colormap_category::{ColormapCategory, ColormapSelection};
 
 mod quad3d;
-pub use quad3d::{Quad3DFrame, Quad3DWithPose};
+pub use quad3d::Quad3D;
 
 #[cfg(feature = "testing")]
 pub mod testing;

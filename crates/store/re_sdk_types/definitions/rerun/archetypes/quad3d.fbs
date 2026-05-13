@@ -4,8 +4,8 @@ namespace rerun.archetypes;
 
 /// A quadrotor model rendered from local GLB assets.
 ///
-/// The quadrotor pose is logged through normal [archetypes.Transform3D]
-/// translation/quaternion components by the Rust extension constructor.
+/// The public Rust API logs quadrotor transforms through normal
+/// [archetypes.Transform3D] translation/quaternion components.
 table Quad3D (
   "attr.docs.category": "Spatial 3D",
   "attr.docs.view_types": "Spatial3DView",

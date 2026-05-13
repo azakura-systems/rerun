@@ -31,6 +31,6 @@ mod prelude {
         TensorBuffer, TensorData, Trail3DPoint, Vec2D, Vec3D, Vec4D,
     };
     // Special utility types.
-    pub use re_sdk_types::{AnyValues, DynamicArchetype, Quad3DFrame, Quad3DWithPose, Rotation3D};
+    pub use re_sdk_types::{AnyValues, DynamicArchetype, Quad3D, Rotation3D};
 }
 pub use prelude::*;

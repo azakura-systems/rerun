@@ -30,14 +30,28 @@ already normal for the upstream file.
 
 Rust extension files add ergonomic helpers only:
 
-- crates/store/re_sdk_types/src/archetypes/quad3d_ext.rs
 - crates/store/re_sdk_types/src/archetypes/trail3d_ext.rs
 - crates/store/re_sdk_types/src/datatypes/quad3d_thetas_ext.rs
 - crates/store/re_sdk_types/src/datatypes/trail3d_*_ext.rs
 
-Quad3D pose is intentionally serialized as normal Transform3D
+Quad3D's public Rust API lives in:
+
+- crates/store/re_sdk_types/src/quad3d.rs
+
+It is exported as `rerun::Quad3D`, while the generated archetype remains
+available as `rerun::archetypes::Quad3D`. The user-facing API is:
+
+- `Quad3D::from_thetas(...).with_translation(...).with_quaternion(...)`
+- `Quad3D::update_fields().with_translation(...)`
+- `Quad3D::clear_fields()`
+
+`crates/store/re_sdk_types/src/archetypes/quad3d_ext.rs` is intentionally empty
+because the generated archetype should not expose a parallel ergonomic API.
+
+Quad3D transforms are intentionally serialized as normal Transform3D
 translation/quaternion components. This keeps transform inheritance, focus, and
-camera tracking on Rerun's native transform path.
+camera tracking on Rerun's native transform path. Do not reintroduce the old
+frame wrapper types or `from_frame`/`update_frame`.
 
 Spatial visualizers
 -------------------
