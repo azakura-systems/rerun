@@ -2,10 +2,10 @@
 
 use std::fmt::Write as _;
 
-use egui::{NumExt as _, ScrollArea};
 #[cfg(debug_assertions)]
 use egui::containers::menu;
 use egui::containers::menu::{MenuButton, MenuConfig};
+use egui::{NumExt as _, ScrollArea};
 use re_ui::menu::menu_style;
 use re_ui::{UICommand, UICommandSender as _, UiExt as _};
 use re_viewer_context::ActiveStoreContext;

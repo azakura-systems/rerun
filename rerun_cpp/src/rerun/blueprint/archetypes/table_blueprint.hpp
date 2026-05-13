@@ -115,8 +115,7 @@ namespace rerun::blueprint::archetypes {
         /// Additionally, the table must be remote and have another column with
         /// `rerun:is_table_index` metadata since flag changes are persisted to the server
         /// via upsert.
-        TableBlueprint with_flag_column(
-            const rerun::blueprint::components::ColumnName& _flag_column
+        TableBlueprint with_flag_column(const rerun::blueprint::components::ColumnName& _flag_column
         ) && {
             flag_column = ComponentBatch::from_loggable(_flag_column, Descriptor_flag_column)
                               .value_or_throw();
@@ -142,8 +141,7 @@ namespace rerun::blueprint::archetypes {
         /// If unset, defaults to the first URL column in the table that points to the same
         /// Rerun server. If no such column exists, no URL is associated with cards and
         /// clicking them does not navigate anywhere.
-        TableBlueprint with_url_column(
-            const rerun::blueprint::components::ColumnName& _url_column
+        TableBlueprint with_url_column(const rerun::blueprint::components::ColumnName& _url_column
         ) && {
             url_column =
                 ComponentBatch::from_loggable(_url_column, Descriptor_url_column).value_or_throw();

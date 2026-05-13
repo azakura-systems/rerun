@@ -83,10 +83,8 @@ namespace rerun::archetypes {
         Trail3D& operator=(Trail3D&& other) = default;
 
         explicit Trail3D(rerun::components::Trail3DPoint _point)
-            : point(
-                  ComponentBatch::from_loggable(std::move(_point), Descriptor_point)
-                      .value_or_throw()
-              ) {}
+            : point(ComponentBatch::from_loggable(std::move(_point), Descriptor_point)
+                        .value_or_throw()) {}
 
         /// Update only some specific fields of a `Trail3D`.
         static Trail3D update_fields() {

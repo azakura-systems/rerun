@@ -68,10 +68,8 @@ namespace rerun::archetypes {
         Quad3D& operator=(Quad3D&& other) = default;
 
         explicit Quad3D(rerun::components::Quad3DThetas _thetas)
-            : thetas(
-                  ComponentBatch::from_loggable(std::move(_thetas), Descriptor_thetas)
-                      .value_or_throw()
-              ) {}
+            : thetas(ComponentBatch::from_loggable(std::move(_thetas), Descriptor_thetas)
+                         .value_or_throw()) {}
 
         /// Update only some specific fields of a `Quad3D`.
         static Quad3D update_fields() {
@@ -137,8 +135,7 @@ namespace rerun::archetypes {
         ///
         /// This only makes sense when used in conjunction with `columns`. `with_show_label` should
         /// be used when logging a single row's worth of data.
-        Quad3D with_many_show_label(
-            const Collection<rerun::components::ShowLabels>& _show_label
+        Quad3D with_many_show_label(const Collection<rerun::components::ShowLabels>& _show_label
         ) && {
             show_label =
                 ComponentBatch::from_loggable(_show_label, Descriptor_show_label).value_or_throw();

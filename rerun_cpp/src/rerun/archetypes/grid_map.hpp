@@ -299,8 +299,7 @@ namespace rerun::archetypes {
         ///
         /// This only makes sense when used in conjunction with `columns`. `with_quaternion` should
         /// be used when logging a single row's worth of data.
-        GridMap with_many_quaternion(
-            const Collection<rerun::components::RotationQuat>& _quaternion
+        GridMap with_many_quaternion(const Collection<rerun::components::RotationQuat>& _quaternion
         ) && {
             quaternion =
                 ComponentBatch::from_loggable(_quaternion, Descriptor_quaternion).value_or_throw();
@@ -337,8 +336,7 @@ namespace rerun::archetypes {
         ///
         /// This only makes sense when used in conjunction with `columns`. `with_draw_order` should
         /// be used when logging a single row's worth of data.
-        GridMap with_many_draw_order(
-            const Collection<rerun::components::DrawOrder>& _draw_order
+        GridMap with_many_draw_order(const Collection<rerun::components::DrawOrder>& _draw_order
         ) && {
             draw_order =
                 ComponentBatch::from_loggable(_draw_order, Descriptor_draw_order).value_or_throw();

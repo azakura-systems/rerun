@@ -54,8 +54,7 @@ namespace rerun::archetypes {
         McapMessage& operator=(McapMessage&& other) = default;
 
         explicit McapMessage(rerun::components::Blob _data)
-            : data(
-                  ComponentBatch::from_loggable(std::move(_data), Descriptor_data).value_or_throw()
+            : data(ComponentBatch::from_loggable(std::move(_data), Descriptor_data).value_or_throw()
               ) {}
 
         /// Update only some specific fields of a `McapMessage`.

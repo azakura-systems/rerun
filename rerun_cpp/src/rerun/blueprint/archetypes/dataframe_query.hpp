@@ -117,8 +117,7 @@ namespace rerun::blueprint::archetypes {
         /// The timeline for this query.
         ///
         /// If unset, the timeline currently active on the time panel is used.
-        DataframeQuery with_timeline(
-            const rerun::blueprint::components::TimelineName& _timeline
+        DataframeQuery with_timeline(const rerun::blueprint::components::TimelineName& _timeline
         ) && {
             timeline =
                 ComponentBatch::from_loggable(_timeline, Descriptor_timeline).value_or_throw();
@@ -158,8 +157,7 @@ namespace rerun::blueprint::archetypes {
         }
 
         /// Selected columns. If unset, only the active timeline and all component columns are selected.
-        DataframeQuery with_select(
-            const rerun::blueprint::components::SelectedColumns& _select
+        DataframeQuery with_select(const rerun::blueprint::components::SelectedColumns& _select
         ) && {
             select = ComponentBatch::from_loggable(_select, Descriptor_select).value_or_throw();
             return std::move(*this);
@@ -183,8 +181,7 @@ namespace rerun::blueprint::archetypes {
         ///
         /// When enabled and the view's timeline matches the time panel's active timeline,
         /// the view will scroll to keep the row at or before the current time cursor visible.
-        DataframeQuery with_auto_scroll(
-            const rerun::blueprint::components::AutoScroll& _auto_scroll
+        DataframeQuery with_auto_scroll(const rerun::blueprint::components::AutoScroll& _auto_scroll
         ) && {
             auto_scroll = ComponentBatch::from_loggable(_auto_scroll, Descriptor_auto_scroll)
                               .value_or_throw();

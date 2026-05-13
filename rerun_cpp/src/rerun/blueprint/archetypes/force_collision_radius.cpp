@@ -21,8 +21,7 @@ namespace rerun::blueprint::archetypes {
         return archetype;
     }
 
-    Collection<ComponentColumn> ForceCollisionRadius::columns(
-        const Collection<uint32_t>& lengths_
+    Collection<ComponentColumn> ForceCollisionRadius::columns(const Collection<uint32_t>& lengths_
     ) {
         std::vector<ComponentColumn> columns;
         columns.reserve(3);

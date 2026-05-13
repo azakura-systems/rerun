@@ -187,8 +187,7 @@ namespace rerun::archetypes {
         template <typename TElement>
         DepthImage(const TElement* pixels, WidthHeight resolution)
             : DepthImage{
-                  reinterpret_cast<const uint8_t*>(pixels), resolution, get_datatype(pixels)
-              } {}
+                  reinterpret_cast<const uint8_t*>(pixels), resolution, get_datatype(pixels)} {}
 
         /// Constructs image from pixel data + resolution with datatype inferred from the passed collection.
         ///
@@ -212,8 +211,7 @@ namespace rerun::archetypes {
             : DepthImage{
                   Collection<uint8_t>::borrow(bytes, num_bytes(resolution, datatype)),
                   resolution,
-                  datatype
-              } {}
+                  datatype} {}
 
         /// Constructs image from pixel data + resolution + datatype.
         ///
@@ -397,8 +395,7 @@ namespace rerun::archetypes {
         ///
         /// This only makes sense when used in conjunction with `columns`. `with_draw_order` should
         /// be used when logging a single row's worth of data.
-        DepthImage with_many_draw_order(
-            const Collection<rerun::components::DrawOrder>& _draw_order
+        DepthImage with_many_draw_order(const Collection<rerun::components::DrawOrder>& _draw_order
         ) && {
             draw_order =
                 ComponentBatch::from_loggable(_draw_order, Descriptor_draw_order).value_or_throw();
@@ -464,8 +461,7 @@ namespace rerun {
     template <>
     struct AsComponents<archetypes::DepthImage> {
         /// Serialize all set component batches.
-        static Result<Collection<ComponentBatch>> as_batches(
-            const archetypes::DepthImage& archetype
+        static Result<Collection<ComponentBatch>> as_batches(const archetypes::DepthImage& archetype
         );
     };
 } // namespace rerun
